@@ -20,6 +20,7 @@ class Bed extends Product
 
   protected function setPetType($pet_type)
   {
+    if($pet_type !== 'Dog' && $pet_type !== 'Cat') return;
     $this->pet_type = $pet_type;
     return $this;
   }

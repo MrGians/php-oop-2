@@ -7,19 +7,21 @@ class Toy extends Product
   protected $pet_type;
   protected $material;
   protected $brand;
-  protected $pieces;
+  protected $quantity;
 
-  public function __construct($name, $description, $price, $availability, $pet_type, $material, $brand, $pieces)
+  public function __construct($name, $description, $price, $availability, $pet_type, $material, $brand, $quantity)
   {
     parent::__construct($name, $description, $price, $availability);
     $this->setPetType($pet_type);
     $this->setMaterial($material);
     $this->setBrand($brand);
-    $this->setPieces($pieces);
+    $this->setQuantity($quantity);
   }
 
   protected function setPetType($pet_type)
   {
+    if($pet_type !== 'Dog' && $pet_type !== 'Cat') return;
+
     $this->pet_type = $pet_type;
     return $this;
   }
@@ -51,15 +53,17 @@ class Toy extends Product
     return $this->brand;
   }
 
-  protected function setPieces($pieces)
+  protected function setQuantity($quantity)
   {
-    $this->pieces = $pieces;
+    if(!is_numeric($quantity) || $quantity <= 0) return;
+
+    $this->quantity = $quantity;
     return $this;
   }
 
-  public function getPieces()
+  public function getQuantity()
   {
-    return $this->pieces;
+    return $this->quantity;
   }
 
 }

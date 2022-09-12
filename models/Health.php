@@ -18,6 +18,8 @@ class Health extends Product
 
   protected function setPetType($pet_type)
   {
+    if($pet_type !== 'Dog' && $pet_type !== 'Cat') return;
+
     $this->pet_type = $pet_type;
     return $this;
   }
@@ -29,6 +31,8 @@ class Health extends Product
 
   protected function setPetAge($pet_age)
   {
+    if(!is_numeric($pet_age) || $pet_age <= 0) return;
+
     $this->pet_age = $pet_age;
     return $this;
   }

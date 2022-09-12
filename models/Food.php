@@ -20,6 +20,8 @@ class Food extends Product
 
   protected function setPetType($pet_type)
   {
+    if($pet_type !== 'Dog' && $pet_type !== 'Cat') return;
+
     $this->pet_type = $pet_type;
     return $this;
   }
@@ -31,6 +33,8 @@ class Food extends Product
 
   protected function setPetAge($pet_age)
   {
+    if(!is_numeric($pet_age) || $pet_age <= 0) return;
+
     $this->pet_age = $pet_age;
     return $this;
   }
@@ -42,6 +46,8 @@ class Food extends Product
 
   protected function setFoodType($food_type)
   {
+    if($food_type !== 'Wet' && $food_type !== 'Dry') return;
+    
     $this->food_type = $food_type;
     return $this;
   }
@@ -53,6 +59,8 @@ class Food extends Product
 
   protected function setQuantity($quantity)
   {
+    if(!is_numeric($quantity) || $quantity <= 0) return;
+
     $this->quantity = $quantity;
     return $this;
   }
