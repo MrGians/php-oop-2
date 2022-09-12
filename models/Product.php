@@ -5,14 +5,12 @@ class Product
   protected $name;
   protected $description;
   protected $price;
-  protected $availability;
 
-  public function __construct($name, $description, $price, $availability)
+  public function __construct($name, $description, $price)
   {
     $this->setName($name);
     $this->setDescription($description);
     $this->setPrice($price);
-    $this->setAvailability($availability);
   }
 
   protected function setName($name)
@@ -46,17 +44,6 @@ class Product
   public function getPrice()
   {
     return $this->price;
-  }
-
-  protected function setavAilability($availability)
-  {
-    $this->availability = $availability;
-    return $this;
-  }
-
-  public function getAvailability()
-  {
-    return $this->availability;
   }
 
 }
