@@ -8,16 +8,13 @@ class Customer extends Person
   protected $email;
   protected $password;
   protected $discount;
-  protected $wish_list;
 
-  public function __construct($first_name, $last_name, $age, $address, $bank_account, $username, $email, $password, $discount, $wish_list)
+  public function __construct($first_name, $last_name, $age, $address, $bank_account, $username, $email, $password)
   {
     parent::__construct($first_name, $last_name, $age, $address, $bank_account);
     $this->setUsername($username);
     $this->setEmail($email);
     $this->setPassword($password);
-    $this->setDiscount($discount);
-    $this->setWishList($wish_list);
   }
 
   protected function setUsername($username)
@@ -62,17 +59,6 @@ class Customer extends Person
   public function getDiscount()
   {
     return $this->discount;
-  }
-
-  public function setWishList($wish_list)
-  {
-    $this->wish_list = $wish_list;
-    return $this;
-  }
-
-  public function getWishList()
-  {
-    return $this->wish_list;
   }
 }
 
