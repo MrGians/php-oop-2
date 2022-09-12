@@ -79,6 +79,11 @@ class Person
   {
     return $this->bank_account;
   }
+
+  public function payWithCard($amount)
+  {
+    return $this->bank_account->checkWithdraw($amount);
+  }
 }
 
 ?>

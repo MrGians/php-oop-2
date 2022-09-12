@@ -54,7 +54,7 @@ class BankAccount
 
   private function setExpirationDate()
   {
-    $expiration_date = date('Y-m', strtotime(' + 5 years'));
+    $expiration_date = date('Y-m-d', strtotime(' + 5 years'));
     $this->expiration_date = $expiration_date;
     return $this;
   }
@@ -64,8 +64,10 @@ class BankAccount
     return $this->expiration_date;
   }
 
-  public function cardPayment($amount){
-    if(!is_numeric($amount) || $amount < 0 || $this->balance < $amount) return false;
+  public function checkWithdraw($amount)
+  {
+    $current_date = date('Y-m-d');
+    if(!is_numeric($amount) || $amount < 0 || $this->balance < $amount || $current_date > $this->expiration_date) return false;
 
     $this->balance -= $amount;
     return true;
