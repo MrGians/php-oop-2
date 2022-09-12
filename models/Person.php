@@ -40,8 +40,15 @@ class Person
     return $this->last_name;
   }
 
+  public function getFullName()
+  {
+    return "{$this->first_name} {$this->last_name}";
+  }
+
   protected function setAge($age)
   {
+    if(!is_numeric($age) || $age <= 0) return;
+    
     $this->age = $age;
     return $this;
   }
