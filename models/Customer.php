@@ -7,7 +7,7 @@ class Customer extends Person
   protected $username;
   protected $email;
   protected $password;
-  protected $discount;
+  protected $discount = 20;
 
   public function __construct($first_name, $last_name, $age, $address, $bank_account, $username, $email, $password)
   {
@@ -30,6 +30,7 @@ class Customer extends Person
 
   protected function setEmail($email)
   {
+    if(!strpos($email, '@') || !strpos($email, '.')) return;
     $this->email = $email;
     return $this;
   }
@@ -42,17 +43,6 @@ class Customer extends Person
   protected function setPassword($password)
   {
     $this->password = $password;
-    return $this;
-  }
-
-  protected function getPassword()
-  {
-    return $this->password;
-  }
-
-  protected function setDiscount($discount)
-  {
-    $this->discount = $discount;
     return $this;
   }
 
