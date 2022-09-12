@@ -25,12 +25,18 @@ include_once __DIR__ . '/models/Toy.php';
 include_once __DIR__ . '/models/Bed.php';
 
 
-// Instances
+// Client Instances
 $bank_account = new BankAccount('834562', 'Credit', 500);
 $guest_customer = new Person('Mario', 'Rossi', 35, 'Via dei Mori n.12', $bank_account);
 $customer = new Customer('Mario', 'Verdi', 22, 'Piazza Fiume n.13', $bank_account, 'Mario22', 'mario@verdi.it', 'password12345');
 
-var_dump($bank_account);
-var_dump($guest_customer);
-var_dump($customer);
+// Product Instances
+$dog_bed = new Bed('Cuccia Grande', 'Cuccia grande per cani.', 24.99, 'Dog', 'Cotton', 'Arcaplanet', '50x36x74');
+$dog_food = new Food('Bocconcini di Manzo', 'Bocconcini con Manzo di prima scelta!', 10, 'Dog', 'Adult', 'Dry', 3.5);
+$dog_health = new Health('Collare Antizanzare', 'Collare Antizanzare per Cani.', 30, 'Dog', 'Adult', 'Arcaplanet');
+$dog_toy = new Toy('Osso di Gomma', 'Gustosissimo Osso di gomma per cani!', 6, 'Dog', 'Rubber', 'Arcaplanet', 1);
+$cat_bed = new Bed('Cuscino Piccolo', 'Cuscino piccolo per gatti.', 14.99, 'Cat', 'Cotton', 'Arcaplanet', '20x12x24');
+$cat_food = new Food('Patè di Merluzzo', 'Patè di Merluzzo per gatti fino ai 12 mesi.', 6.99, 'Cat', 'Puppy', 'Wet', 0.3);
+$cat_health = new Health('Lozione Antipulci', 'Lozione Antipulci per Gatti.', 30, 'Cat', 'Adult', 'Arcaplanet');
+$cat_toy = new Toy('Set x5 Gomitolo di lana', 'Set di Gomitoli di lana contenente 5 pezzi.', 12, 'Cat', 'Wool', 'Arcaplanet', 5);
 ?>
