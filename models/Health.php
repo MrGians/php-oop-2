@@ -31,7 +31,7 @@ class Health extends Product
 
   protected function setPetAge($pet_age)
   {
-    if(!is_numeric($pet_age) || $pet_age <= 0) return;
+    if($pet_age !== 'Adult' && $pet_age !== 'Puppy') return;
 
     $this->pet_age = $pet_age;
     return $this;
