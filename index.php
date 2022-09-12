@@ -39,4 +39,51 @@ $cat_bed = new Bed('Cuscino Piccolo', 'Cuscino piccolo per gatti.', 14.99, 'Cat'
 $cat_food = new Food('Patè di Merluzzo', 'Patè di Merluzzo per gatti fino ai 12 mesi.', 6.99, 'Cat', 'Puppy', 'Wet', 0.3);
 $cat_health = new Health('Lozione Antipulci', 'Lozione Antipulci per Gatti.', 30, 'Cat', 'Adult', 'Arcaplanet');
 $cat_toy = new Toy('Set x5 Gomitolo di lana', 'Set di Gomitoli di lana contenente 5 pezzi.', 12, 'Cat', 'Wool', 'Arcaplanet', 5);
+// var_dump($dog_bed, $dog_food, $dog_health, $dog_toy,$cat_bed, $cat_food, $cat_health, $cat_toy);
+
+
+// Receive the sum of the price of the products
+function getTotalCartPrice($products){
+
+  $cart = [...$products];
+  $total = 0;
+
+  foreach ($cart as $product) {
+    $price = $product->getPrice();
+    $total += $price;
+  }
+
+  return $total;
+};
+
+
+
+// !! Change in $customer or $guest_customer
+$client = $customer;
+
+// # Payment logic
+// | Cart Total - add o remove product from $total
+$total = getTotalCartPrice([$dog_food, $cat_food, $cat_toy]);
+
+if (is_numeric($total) && $total > 0) {
+  echo "<strong>Totale prodotti nel carrello: €$total</strong><br/>";
+  
+  // Apply Discount if available
+  if ($client instanceof Customer) {
+    $total = $total / 100 * (100 - $client->getDiscount());
+    echo "Hai ricevuto uno sconto sul totale del: {$client->getDiscount()}%<br/>";
+  }
+
+  $total = number_format($total, 2);
+  echo "<strong>Nuovo Totale: €$total</strong><br/>";
+
+  if($client->payWithCard($total)) echo "<strong>Pagamento con Carta di €$total Riuscito!</strong> <br/>";
+  else echo "<strong>Pagamento con Carta di €$total Fallito.</strong> <br/>";
+
+
+} else {
+  echo 'Impossibile calcolare il totale del carrello.';
+};
+
+
 ?>
