@@ -2,10 +2,10 @@
 
 class BankAccount
 {
-  private $number;
-  private $type;
-  private $balance;
-  private $expiration_date;
+  protected $number;
+  protected $type;
+  protected $balance;
+  protected $expiration_date;
 
   public function __construct($number, $type, $balance, $expiration_date)
   {
@@ -15,7 +15,7 @@ class BankAccount
     $this->setExpirationDate($expiration_date);
   }
 
-  public function setNumber($number)
+  private function setNumber($number)
   {
     $this->number = $number;
     return $this;
@@ -26,7 +26,7 @@ class BankAccount
     return $this->number;
   }
 
-  public function setType($type)
+  private function setType($type)
   {
     $this->type = $type;
     return $this;
@@ -37,7 +37,7 @@ class BankAccount
     return $this->type;
   }
 
-  public function setBalance($balance)
+  private function setBalance($balance)
   {
     $this->balance = $balance;
     return $this;
@@ -48,7 +48,7 @@ class BankAccount
     return $this->balance;
   }
 
-  public function setExpirationDate($expiration_date)
+  private function setExpirationDate($expiration_date)
   {
     $this->expiration_date = $expiration_date;
     return $this;

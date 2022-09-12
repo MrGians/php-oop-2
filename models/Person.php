@@ -1,12 +1,13 @@
 <?php 
 
+include_once __DIR__ . '/BankAccount.php';
 class Person
 {
-  private $first_name;
-  private $last_name;
-  private $age;
-  private $address;
-  private $bank_account;
+  protected $first_name;
+  protected $last_name;
+  protected $age;
+  protected $address;
+  protected $bank_account;
 
   public function __construct($first_name, $last_name, $age, $address, $bank_account)
   {
@@ -17,7 +18,7 @@ class Person
     $this->setBankAccount($bank_account);
   }
 
-  public function setFirstName($first_name)
+  protected function setFirstName($first_name)
   {
     $this->first_name = $first_name;
     return $this;
@@ -28,7 +29,7 @@ class Person
     return $this->first_name;
   }
 
-  public function setLastName($last_name)
+  protected function setLastName($last_name)
   {
     $this->last_name = $last_name;
     return $this;
@@ -39,7 +40,7 @@ class Person
     return $this->last_name;
   }
 
-  public function setAge($age)
+  protected function setAge($age)
   {
     $this->age = $age;
     return $this;
@@ -50,7 +51,7 @@ class Person
     return $this->age;
   }
 
-  public function setAddress($address)
+  protected function setAddress($address)
   {
     $this->address = $address;
     return $this;
@@ -61,9 +62,9 @@ class Person
     return $this->address;
   }
 
-  public function setBankAccount($bank_account)
+  private function setBankAccount($account)
   {
-    $this->bank_account = $bank_account;
+    if($account instanceof BankAccount) $this->bank_account = $account;
     return $this;
   }
 

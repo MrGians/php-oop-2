@@ -4,11 +4,11 @@ include_once __DIR__ . '/Person.php';
 
 class Customer extends Person
 {
-  private $username;
-  private $email;
-  private $password;
-  private $discount;
-  private $wish_list;
+  protected $username;
+  protected $email;
+  protected $password;
+  protected $discount;
+  protected $wish_list;
 
   public function __construct($first_name, $last_name, $age, $address, $bank_account, $username, $email, $password, $discount, $wish_list)
   {
@@ -20,7 +20,7 @@ class Customer extends Person
     $this->setWishList($wish_list);
   }
 
-  public function setUsername($username)
+  protected function setUsername($username)
   {
     $this->username = $username;
     return $this;
@@ -31,7 +31,7 @@ class Customer extends Person
     return $this->username;
   }
 
-  public function setEmail($email)
+  protected function setEmail($email)
   {
     $this->email = $email;
     return $this;
@@ -42,18 +42,18 @@ class Customer extends Person
     return $this->email;
   }
 
-  public function setPassword($password)
+  protected function setPassword($password)
   {
     $this->password = $password;
     return $this;
   }
 
-  public function getPassword()
+  protected function getPassword()
   {
     return $this->password;
   }
 
-  public function setDiscount($discount)
+  protected function setDiscount($discount)
   {
     $this->discount = $discount;
     return $this;
