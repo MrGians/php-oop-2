@@ -8,9 +8,9 @@ class Health extends Product
   protected $pet_age;
   protected $brand;
 
-  public function __construct($name, $description, $price, $availability, $pet_type, $pet_age, $brand)
+  public function __construct($name, $description, $price, $pet_type, $pet_age, $brand)
   {
-    parent::__construct($name, $description, $price, $availability);
+    parent::__construct($name, $description, $price);
     $this->setPetType($pet_type);
     $this->setPetAge($pet_age);
     $this->setBrand($brand);

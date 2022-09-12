@@ -9,9 +9,9 @@ class Food extends Product
   protected $food_type;
   protected $quantity;
 
-  public function __construct($name, $description, $price, $availability, $pet_type, $pet_age, $food_type, $quantity)
+  public function __construct($name, $description, $price, $pet_type, $pet_age, $food_type, $quantity)
   {
-    parent::__construct($name, $description, $price, $availability);
+    parent::__construct($name, $description, $price);
     $this->setPetType($pet_type);
     $this->setPetAge($pet_age);
     $this->setFoodType($food_type);
