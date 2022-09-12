@@ -7,17 +7,19 @@ class BankAccount
   protected $balance;
   protected $expiration_date;
 
-  public function __construct($number, $type, $balance, $expiration_date)
+  public function __construct($number, $type, $balance)
   {
     $this->setNumber($number);
     $this->setType($type);
-    $this->setBalance($balance);
-    $this->setExpirationDate($expiration_date);
+    $this->setBalance($balance); // Balance deliberately hard-coded
   }
 
   private function setNumber($number)
   {
+    if(!is_numeric($number) || strlen($number) !== 6) return;
     $this->number = $number;
+    // When the card is created, the expiration date is also created
+    $this->setExpirationDate();
     return $this;
   }
 
@@ -28,6 +30,8 @@ class BankAccount
 
   private function setType($type)
   {
+    if($type !== 'Credit' && $type !== 'Debit') return;
+
     $this->type = $type;
     return $this;
   }
@@ -48,8 +52,9 @@ class BankAccount
     return $this->balance;
   }
 
-  private function setExpirationDate($expiration_date)
+  private function setExpirationDate()
   {
+    $expiration_date = date('Y-m', strtotime(' + 5 years'));
     $this->expiration_date = $expiration_date;
     return $this;
   }
@@ -59,17 +64,10 @@ class BankAccount
     return $this->expiration_date;
   }
 
-  public function checkDeposit($_amount){
-    if(!is_numeric($_amount) || $_amount <= 0) return false;
+  public function cardPayment($amount){
+    if(!is_numeric($amount) || $amount < 0 || $this->balance < $amount) return false;
 
-    $this->balance += $_amount;
-    return true;
-  }
-
-  public function checkWithdraw($_amount){
-    if(!is_numeric($_amount) || $_amount <= 0 || $this->balance < $_amount) return false;
-
-    $this->balance -= $_amount;
+    $this->balance -= $amount;
     return true;
   }
 }
