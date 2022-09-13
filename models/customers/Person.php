@@ -1,6 +1,6 @@
 <?php 
 
-include_once __DIR__ . '/BankAccount.php';
+include_once __DIR__ . '/../BankAccount.php';
 class Person
 {
   protected $first_name;
