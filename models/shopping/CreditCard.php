@@ -53,7 +53,5 @@ class CreditCard
     return $this->expiration_date;
   }
 }
-$card = new CreditCard('23234', 'Visa', '15-09-2025');
-var_dump($card);
-var_dump($card->isExpired());
+
 ?>
