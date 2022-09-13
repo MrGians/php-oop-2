@@ -19,10 +19,10 @@ include_once __DIR__ . '/models/Person.php';
 include_once __DIR__ . '/models/Customer.php';
 
 // Products
-include_once __DIR__ . '/models/Food.php';
-include_once __DIR__ . '/models/Health.php';
-include_once __DIR__ . '/models/Toy.php';
-include_once __DIR__ . '/models/Bed.php';
+include_once __DIR__ . '/models/products/Food.php';
+include_once __DIR__ . '/models/products/Health.php';
+include_once __DIR__ . '/models/products/Toy.php';
+include_once __DIR__ . '/models/products/Bed.php';
 
 
 // Client Instances
