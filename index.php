@@ -11,6 +11,11 @@ Alcuni prodotti (es. antipulci) avranno la caratteristica che saranno disponibil
 -->
 
 <?php 
+// # Products
+include_once __DIR__ . '/models/products/Food.php';
+include_once __DIR__ . '/models/products/Health.php';
+include_once __DIR__ . '/models/products/Toy.php';
+include_once __DIR__ . '/models/products/Bed.php';
 
 // # Address & CreditCard
 include_once __DIR__ . '/models/shipping/Address.php';
@@ -19,20 +24,6 @@ include_once __DIR__ . '/models/shopping/CreditCard.php';
 // # Customer (Guest) & RegisteredCustomer
 include_once __DIR__ . '/models/customers/Customer.php';
 include_once __DIR__ . '/models/customers/RegisteredCustomer.php';
-
-// # Products
-include_once __DIR__ . '/models/products/Food.php';
-include_once __DIR__ . '/models/products/Health.php';
-include_once __DIR__ . '/models/products/Toy.php';
-include_once __DIR__ . '/models/products/Bed.php';
-
-// | Address & CreditCard Instances
-$address = new Address('Mario', 'Rossi', 'Piazza Italia, 12', '07100', 'Sassari', 'Italia');
-$credit_card = new CreditCard('592095', 'Mastercard', '15-09-2022');
-
-// | Customer Instances
-$guest_customer = new Customer();
-$registered_customer = new RegisteredCustomer('Mario', 'Verdi', 22, 'Piazza Fiume n.13', $bank_account, 'Mario22', 'mario@verdi.it', 'password12345');
 
 // | Product Instances
 $dog_bed = new Bed('Cuccia Grande', 'Cuccia grande per cani.', 24.99, ['Dog'], 'Arcaplanet', 'Cotton', '50x36x74');
@@ -45,8 +36,24 @@ $cat_health = new Health('Lozione Antipulci', 'Lozione Antipulci per Gatti.', 30
 $cat_toy = new Toy('Set x5 Gomitolo di lana', 'Set di Gomitoli di lana contenente 5 pezzi.', 12, ['Cat'], 'Arcaplanet', 'Wool', 5);
 // var_dump($dog_bed, $dog_food, $dog_health, $dog_toy,$cat_bed, $cat_food, $cat_health, $cat_toy);
 
+// | Address & CreditCard Instances
+$address = new Address('Mario', 'Rossi', 'Piazza Italia, 12', '07100', 'Sassari', 'Italia');
+$credit_card = new CreditCard('592095', 'Mastercard', '15-09-2022');
+
+// | Customer Instances
+$guest_customer = new Customer();
+$registered_customer = new RegisteredCustomer('Mister Mario24', 'mario@mister.it', $address, $credit_card);
 
 
+
+$client = $registered_customer;
+
+// Order Simulation
+echo '<h3>Ordine Completo:</h3><br/>';
+$client->addToCart($dog_bed);
+$client->addToCart($dog_bed);
+$client->placeOrder($address, $credit_card);
+// !! var_dump() from Order.php => performPayment();
 
 
 ?>
