@@ -5,12 +5,17 @@ class Product
   protected $name;
   protected $description;
   protected $price;
+  protected $pet_types;
+  protected $brand;
 
-  public function __construct($name, $description, $price)
+  public function __construct($name, $description, $price, $pet_types, $brand)
   {
     $this->setName($name);
     $this->setDescription($description);
     $this->setPrice($price);
+    $this->setPetTypes($pet_types);
+    $this->setBrand($brand);
+
   }
 
   protected function setName($name)
@@ -44,6 +49,30 @@ class Product
   public function getPrice()
   {
     return $this->price;
+  }
+
+  protected function setPetTypes($pet_types)
+  {
+    if($pet_types !== 'Dog' && $pet_types !== 'Cat') return;
+
+    $this->pet_types = $pet_types;
+    return $this;
+  }
+
+  public function getPetTypes()
+  {
+    return $this->pet_types;
+  }
+
+  protected function setBrand($brand)
+  {
+    $this->brand = $brand;
+    return $this;
+  }
+
+  public function getBrand()
+  {
+    return $this->brand;
   }
 
 }

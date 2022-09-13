@@ -4,31 +4,16 @@ require_once __DIR__ . '/Product.php';
 
 class Food extends Product
 {
-  protected $pet_type;
   protected $pet_age;
   protected $food_type;
   protected $quantity;
 
-  public function __construct($name, $description, $price, $pet_type, $pet_age, $food_type, $quantity)
+  public function __construct($name, $description, $price, $pet_types, $brand, $pet_age, $food_type, $quantity)
   {
-    parent::__construct($name, $description, $price);
-    $this->setPetType($pet_type);
+    parent::__construct($name, $description, $price, $pet_types, $brand);
     $this->setPetAge($pet_age);
     $this->setFoodType($food_type);
     $this->setQuantity($quantity);
-  }
-
-  protected function setPetType($pet_type)
-  {
-    if($pet_type !== 'Dog' && $pet_type !== 'Cat') return;
-
-    $this->pet_type = $pet_type;
-    return $this;
-  }
-
-  public function getPetType()
-  {
-    return $this->pet_type;
   }
 
   protected function setPetAge($pet_age)

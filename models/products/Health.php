@@ -4,29 +4,12 @@ require_once __DIR__ . '/Product.php';
 
 class Health extends Product
 {
-  protected $pet_type;
   protected $pet_age;
-  protected $brand;
 
-  public function __construct($name, $description, $price, $pet_type, $pet_age, $brand)
+  public function __construct($name, $description, $price, $pet_types, $brand, $pet_age)
   {
-    parent::__construct($name, $description, $price);
-    $this->setPetType($pet_type);
+    parent::__construct($name, $description, $price, $pet_types, $brand);
     $this->setPetAge($pet_age);
-    $this->setBrand($brand);
-  }
-
-  protected function setPetType($pet_type)
-  {
-    if($pet_type !== 'Dog' && $pet_type !== 'Cat') return;
-
-    $this->pet_type = $pet_type;
-    return $this;
-  }
-
-  public function getPetType()
-  {
-    return $this->pet_type;
   }
 
   protected function setPetAge($pet_age)
@@ -40,17 +23,6 @@ class Health extends Product
   public function getPetAge()
   {
     return $this->pet_age;
-  }
-
-  protected function setBrand($brand)
-  {
-    $this->brand = $brand;
-    return $this;
-  }
-
-  public function getBrand()
-  {
-    return $this->brand;
   }
 
 }
