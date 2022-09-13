@@ -53,7 +53,7 @@ class Product
 
   protected function setPetTypes($pet_types)
   {
-    if($pet_types !== 'Dog' && $pet_types !== 'Cat') return;
+    if(!in_array("Dog", $pet_types) && !in_array("Cat", $pet_types)) return;
 
     $this->pet_types = $pet_types;
     return $this;
