@@ -1,55 +1,35 @@
 <?php 
 
-include_once __DIR__ . '/Person.php';
-
-class Customer extends Person
+include_once __DIR__ . '/../shopping/Cart.php';
+class Customer
 {
-  protected $username;
-  protected $email;
-  protected $password;
-  protected $discount = 20;
+  protected $cart;
 
-  public function __construct($first_name, $last_name, $age, $address, $bank_account, $username, $email, $password)
+  public function __construct()
   {
-    parent::__construct($first_name, $last_name, $age, $address, $bank_account);
-    $this->setUsername($username);
-    $this->setEmail($email);
-    $this->setPassword($password);
+    $this->setCart();
   }
 
-  protected function setUsername($username)
+  
+  protected function setCart()
   {
-    $this->username = $username;
-    return $this;
+    $this->cart = new Cart();
   }
 
-  public function getUsername()
+  public function getCart()
   {
-    return $this->username;
+    return $this->cart;
   }
 
-  protected function setEmail($email)
+  public function addToCart($product)
   {
-    if(!strpos($email, '@') || !strpos($email, '.')) return;
-    $this->email = $email;
-    return $this;
+    $this->cart->addProduct($product);
   }
 
-  public function getEmail()
+  public function removeFromCart($product)
   {
-    return $this->email;
+    $this->cart->removeProduct($product);
   }
 
-  protected function setPassword($password)
-  {
-    $this->password = $password;
-    return $this;
-  }
-
-  public function getDiscount()
-  {
-    return $this->discount;
-  }
 }
-
 ?>
