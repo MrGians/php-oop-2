@@ -2,6 +2,7 @@
 
 class Product
 {
+  protected $id;
   protected $name;
   protected $description;
   protected $price;
@@ -10,12 +11,24 @@ class Product
 
   public function __construct($name, $description, $price, $pet_types, $brand)
   {
+    $this->setId();
     $this->setName($name);
     $this->setDescription($description);
     $this->setPrice($price);
     $this->setPetTypes($pet_types);
     $this->setBrand($brand);
 
+  }
+
+  protected function setId()
+  {
+    $this->id = uniqid();
+    return $this;
+  }
+
+  public function getId()
+  {
+    return $this->id;
   }
 
   protected function setName($name)
